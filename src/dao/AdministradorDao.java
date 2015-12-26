@@ -23,8 +23,9 @@ public class AdministradorDao extends GenericDao{
     
     public Administrador getAdmin(String nome, String senha){
     Administrador ad = new Administrador();
-    String sql = "SELECT * FROM administrador WHERE nome = ?, senha = ?";
+    String sql;
     try{
+    sql  = "SELECT * FROM administrador WHERE nome = ?, senha = ?";
     this.prepareStmte(sql);
     this.stmte.setString(1, nome);
     this.stmte.setString(2, senha);
@@ -52,8 +53,8 @@ public class AdministradorDao extends GenericDao{
                 String name = rs.getString("nome");
                 String pass = rs.getString("senha");  
                 autenticado = true;
-            } else {
-                //JOptionPane.showMessageDialog(this, "Acesso Negado \nInforme o setor de Inventário");
+            } else { 
+                
                 stme.close();
                 return autenticado;
             }
@@ -62,5 +63,19 @@ public class AdministradorDao extends GenericDao{
             System.out.println("ERRO: " + ex.getMessage());
         }
         return autenticado;
+    }
+    
+    public Administrador Insert(String nome, String senha){
+    Administrador ad = new Administrador();
+    String sql;
+    /*try{
+        sql = "INSERT INTO administrador(nome,senha) VALUES (?,?)";
+     
+    }catch(SQLException e){
+        System.out.println("ERRO: " + e.getMessage());
+    }
+    
+    */
+    return ad;
     }
 }
