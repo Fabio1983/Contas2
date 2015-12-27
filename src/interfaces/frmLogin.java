@@ -117,7 +117,7 @@ public class frmLogin extends javax.swing.JFrame {
             
         AdministradorDao ad = new AdministradorDao();
             
-        boolean resposta = ad.consultar(nome,senha);//Pego usuario e senha digitados e jogo no metodo consultar para validar
+        boolean resposta = ad.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
         
         if (resposta == true) {//Se Usuario e senha estiverem corretos
             JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!!!");

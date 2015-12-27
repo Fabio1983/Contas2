@@ -87,7 +87,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exUsuariosActionPerformed
-        frmUsuarios u = new frmUsuarios();
+        frmCadUsuarios u = new frmCadUsuarios();
         u.setVisible(true);
         closeWindow();
     }//GEN-LAST:event_exUsuariosActionPerformed

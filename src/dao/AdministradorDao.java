@@ -39,7 +39,7 @@ public class AdministradorDao extends GenericDao{
     }
    }
     
-    public boolean consultar(String nome, String senha) {
+    public boolean verify(String nome, String senha) {
         boolean autenticado = false;
         String sql;
         try {
@@ -65,17 +65,19 @@ public class AdministradorDao extends GenericDao{
         return autenticado;
     }
     
-    public Administrador Insert(String nome, String senha){
-    Administrador ad = new Administrador();
+    public boolean Insert(Administrador administrador){
     String sql;
-    /*try{
+    try{
         sql = "INSERT INTO administrador(nome,senha) VALUES (?,?)";
-     
+        this.prepareStmte(sql);
+        this.stmte.setString(1, administrador.getNome());
+        this.stmte.setString(2, administrador.getSenha());
+        this.stmte.execute();
+        return true;
     }catch(SQLException e){
-        System.out.println("ERRO: " + e.getMessage());
+        return false;
     }
+  }
     
-    */
-    return ad;
-    }
+    
 }

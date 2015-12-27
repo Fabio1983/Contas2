@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import contas.Administrador;
+import dao.AdministradorDao;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -13,13 +15,15 @@ import javax.swing.JOptionPane;
  *
  * @author Fabio
  */
-public class frmUsuarios extends javax.swing.JFrame {
-
+public class frmCadUsuarios extends javax.swing.JFrame {
+    private AdministradorDao adDao;
+    
     /**
      * Creates new form frmUsuarios
      */
-    public frmUsuarios() {
+    public frmCadUsuarios() {
         initComponents();
+        this.adDao = new AdministradorDao();
     }
     
     public void closeWindow(){//método para fechar janelas
@@ -130,8 +134,17 @@ public class frmUsuarios extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Campo Não Preenchido!!!");
         }else{
             //passa para a classe e acessa banco de dados para gravar
+            Administrador ad = new Administrador();
+            ad.setNome(nome);
+            ad.setSenha(senha);
+            if(adDao.Insert(ad) == true){
+                JOptionPane.showMessageDialog(null, "Usuário Inserido com Sucesso!!");
+                txtNome.setText("");
+                txtSenha.setText("");
+            }else{
+                System.out.println("Erro ao Inserir!!!");
+            }
         }
-        
     }//GEN-LAST:event_btnSalvarActionPerformed
     
     /**
@@ -152,20 +165,21 @@ public class frmUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCadUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmUsuarios().setVisible(true);
+                new frmCadUsuarios().setVisible(true);
             }
         });
     }
