@@ -14,20 +14,23 @@
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="exUsuarios">
+                <MenuItem class="javax.swing.JMenuItem" name="cadUsuarios">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cadastro Usu&#xe1;rios"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exUsuariosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadUsuariosActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="edUsuarios">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Edi&#xe7;&#xe3;o Usu&#xe1;rios"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edUsuariosActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+                <MenuItem class="javax.swing.JMenuItem" name="excUsuarios">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Exclus&#xe3;o Usu&#xe1;rios"/>
                   </Properties>

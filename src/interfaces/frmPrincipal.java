@@ -38,9 +38,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        exUsuarios = new javax.swing.JMenuItem();
+        cadUsuarios = new javax.swing.JMenuItem();
         edUsuarios = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        excUsuarios = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,19 +49,24 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Usuários");
 
-        exUsuarios.setText("Cadastro Usuários");
-        exUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        cadUsuarios.setText("Cadastro Usuários");
+        cadUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exUsuariosActionPerformed(evt);
+                cadUsuariosActionPerformed(evt);
             }
         });
-        jMenu3.add(exUsuarios);
+        jMenu3.add(cadUsuarios);
 
         edUsuarios.setText("Edição Usuários");
+        edUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edUsuariosActionPerformed(evt);
+            }
+        });
         jMenu3.add(edUsuarios);
 
-        jMenuItem3.setText("Exclusão Usuários");
-        jMenu3.add(jMenuItem3);
+        excUsuarios.setText("Exclusão Usuários");
+        jMenu3.add(excUsuarios);
 
         jMenu1.add(jMenu3);
 
@@ -86,11 +91,17 @@ public class frmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exUsuariosActionPerformed
+    private void cadUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadUsuariosActionPerformed
         frmCadUsuarios u = new frmCadUsuarios();
         u.setVisible(true);
         closeWindow();
-    }//GEN-LAST:event_exUsuariosActionPerformed
+    }//GEN-LAST:event_cadUsuariosActionPerformed
+
+    private void edUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edUsuariosActionPerformed
+        frmEdUsuarios e = new frmEdUsuarios();
+        e.setVisible(true);
+        closeWindow();
+    }//GEN-LAST:event_edUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,12 +139,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cadUsuarios;
     private javax.swing.JMenuItem edUsuarios;
-    private javax.swing.JMenuItem exUsuarios;
+    private javax.swing.JMenuItem excUsuarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
