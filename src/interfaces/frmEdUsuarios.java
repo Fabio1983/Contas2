@@ -5,22 +5,25 @@
  */
 package interfaces;
 
+import contas.Administrador;
+import dao.AdministradorDao;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
  * @author Fabio
  */
 public class frmEdUsuarios extends javax.swing.JFrame {
-
+    
+    private ArrayList<Administrador> list;
     /**
      * Creates new form frmEdUsuarios
      */
     public frmEdUsuarios() {
         initComponents();
+        
     }
     
     public void closeWindow(){//método para fechar janelas
@@ -28,6 +31,20 @@ public class frmEdUsuarios extends javax.swing.JFrame {
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
     
+    public void ComboUsuarios(){
+
+    /*if(list.isEmpty()){
+     this.dispose();
+    }
+    else
+    {
+      for (int i = 0; i < list.size(); i++)
+      {
+        cmbUsuarios.addItem(list.get(i).getNome());
+      }
+    } */   
+    
+  }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +82,7 @@ public class frmEdUsuarios extends javax.swing.JFrame {
             }
         });
 
-        cmbUsuarios.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbUsuarios.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +118,7 @@ public class frmEdUsuarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();

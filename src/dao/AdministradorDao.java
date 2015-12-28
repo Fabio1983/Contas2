@@ -9,35 +9,61 @@ import contas.Administrador;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import javax.swing.JComboBox;
 /**
  *
  * @author Fabio
  */
 public class AdministradorDao extends GenericDao{
     
+    
+    private javax.swing.JComboBox cmbUsuarios;
+    
     public AdministradorDao(){
     super();
     }
     
-    public Administrador getAdmin(String nome, String senha){
+    public Administrador getAdmin(){
     Administrador ad = new Administrador();
     String sql;
     try{
-    sql  = "SELECT * FROM administrador WHERE nome = ?, senha = ?";
+    sql  = "SELECT * FROM administrador";
     this.prepareStmte(sql);
-    this.stmte.setString(1, nome);
-    this.stmte.setString(2, senha);
     ResultSet rs = this.stmte.executeQuery();
     rs.first();
-    ad.setNome(rs.getString("nome"));
-    ad.setSenha(rs.getString("senha"));
     return ad;
     }catch(SQLException e){
     return null;
     }
-   }
+   } 
+    
+   public ArrayList<Administrador> getAdminByLista(String nome){
+       ArrayList<Administrador> adl = new ArrayList<Administrador>();
+        String sql = "SELECT * FROM administrador WHERE nome LIKE ?";
+        
+        try
+        {
+            this.prepareStmte(sql);
+            this.stmte.setString(1, "%"+nome+"%");
+            ResultSet rs = this.stmte.executeQuery(); //sempre usar quando fazer uma consulta(SELECT)
+           
+            while(rs.next())
+            {
+                Administrador ad = new Administrador();
+                ad.setNome(rs.getString("nome"));
+                ad.setSenha(rs.getString("senha"));
+                adl.add(ad);
+            }
+            return adl;
+            
+        }
+        catch(Exception e)
+        {
+            return null;
+        }  
+    }
     
     public boolean verify(String nome, String senha) {
         boolean autenticado = false;
