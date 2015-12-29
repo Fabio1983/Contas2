@@ -5,8 +5,8 @@
  */
 package interfaces;
 
-import contas.Administrador;
-import dao.AdministradorDao;
+import contas.Usuario;
+import dao.UsuarioDao;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class frmEdUsuarios extends javax.swing.JFrame {
     
-    private ArrayList<Administrador> list;
+    private ArrayList<Usuario> list;
     /**
      * Creates new form frmEdUsuarios
      */
@@ -35,8 +35,8 @@ public class frmEdUsuarios extends javax.swing.JFrame {
     
     public void ComboUsuarios(){
     
-     AdministradorDao adDao = new AdministradorDao();
-     list = adDao.getAdmin();
+     UsuarioDao uDao = new UsuarioDao();
+     list = uDao.getUsuario();
     if(list.isEmpty()){
      this.dispose();
     }

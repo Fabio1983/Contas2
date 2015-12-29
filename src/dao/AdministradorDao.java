@@ -10,8 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
+
 /**
  *
  * @author Fabio
@@ -76,7 +75,7 @@ public class AdministradorDao extends GenericDao{
         boolean autenticado = false;
         String sql;
         try {
-            sql = "SELECT nome, senha FROM administrador WHERE nome = ? and senha = ?";
+            sql = "SELECT * FROM administrador WHERE nome = ? AND senha = ? ";
             PreparedStatement stme;
             stme = conn.prepareStatement(sql);
             stme.setString(1, nome);

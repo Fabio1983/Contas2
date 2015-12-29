@@ -6,7 +6,9 @@
 package interfaces;
 
 import contas.Administrador;
+import contas.Usuario;
 import dao.AdministradorDao;
+import dao.UsuarioDao;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -16,14 +18,14 @@ import javax.swing.JOptionPane;
  * @author Fabio
  */
 public class frmCadUsuarios extends javax.swing.JFrame {
-    private AdministradorDao adDao;
+    private UsuarioDao uDao = new UsuarioDao();
     
     /**
      * Creates new form frmUsuarios
      */
     public frmCadUsuarios() {
         initComponents();
-        this.adDao = new AdministradorDao();
+        
     }
     
     public void closeWindow(){//método para fechar janelas
@@ -134,10 +136,10 @@ public class frmCadUsuarios extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Campo Não Preenchido!!!");
         }else{
             //passa para a classe e acessa banco de dados para gravar
-            Administrador ad = new Administrador();
-            ad.setNome(nome);
-            ad.setSenha(senha);
-            if(adDao.Insert(ad) == true){
+            Usuario u = new Usuario();
+            u.setNome(nome);
+            u.setSenha(senha);
+            if(uDao.Insert(u) == true){
                 JOptionPane.showMessageDialog(null, "Usuário Inserido com Sucesso!!");
                 txtNome.setText("");
                 txtSenha.setText("");
