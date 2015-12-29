@@ -19,28 +19,35 @@ import javax.swing.JComboBox;
 public class AdministradorDao extends GenericDao{
     
     
-    private javax.swing.JComboBox cmbUsuarios;
-    
     public AdministradorDao(){
     super();
     }
     
-    public Administrador getAdmin(){
-    Administrador ad = new Administrador();
-    String sql;
-    try{
-    sql  = "SELECT * FROM administrador";
-    this.prepareStmte(sql);
-    ResultSet rs = this.stmte.executeQuery();
-    rs.first();
-    return ad;
-    }catch(SQLException e){
-    return null;
+    public ArrayList<Administrador> getAdmin(){ //L I S T A
+        
+        ArrayList<Administrador> adList = new ArrayList<>();
+
+        String sql = "SELECT * FROM administrador order by nome";
+               
+        try {
+            this.prepareStmte(sql);
+            ResultSet rs = this.stmte.executeQuery(sql); //sempre usar quando fazer uma consulta(SELECT)
+            rs.beforeFirst();
+            while (rs.next()) {
+                Administrador ad = new Administrador();
+                ad.setNome(rs.getString("nome"));
+                ad.setSenha(rs.getString("senha"));
+                adList.add(ad);
+            }
+            return adList;
+        } catch (Exception e) {
+            return null;
+        } 
     }
-   } 
     
-   public ArrayList<Administrador> getAdminByLista(String nome){
-       ArrayList<Administrador> adl = new ArrayList<Administrador>();
+   public ArrayList<Administrador> getAdminByName(String nome){
+       
+        ArrayList<Administrador> adl = new ArrayList<Administrador>();
         String sql = "SELECT * FROM administrador WHERE nome LIKE ?";
         
         try

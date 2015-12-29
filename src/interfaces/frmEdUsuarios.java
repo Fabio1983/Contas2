@@ -23,7 +23,8 @@ public class frmEdUsuarios extends javax.swing.JFrame {
      */
     public frmEdUsuarios() {
         initComponents();
-        
+        cmbUsuarios.removeAllItems();
+        ComboUsuarios();
     }
     
     public void closeWindow(){//método para fechar janelas
@@ -31,9 +32,12 @@ public class frmEdUsuarios extends javax.swing.JFrame {
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
     
+    
     public void ComboUsuarios(){
-
-    /*if(list.isEmpty()){
+    
+     AdministradorDao adDao = new AdministradorDao();
+     list = adDao.getAdmin();
+    if(list.isEmpty()){
      this.dispose();
     }
     else
@@ -42,8 +46,7 @@ public class frmEdUsuarios extends javax.swing.JFrame {
       {
         cmbUsuarios.addItem(list.get(i).getNome());
       }
-    } */   
-    
+    }    
   }
     /**
      * This method is called from within the constructor to initialize the form.
