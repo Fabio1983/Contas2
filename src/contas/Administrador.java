@@ -10,17 +10,26 @@ package contas;
  * @author Fabio
  */
 public class Administrador {
+    private int idAdministrador;
     private String nome;
     private String senha;
 
-    public Administrador(String nome, String senha) {
+    public Administrador(int idAdministrador, String nome, String senha) {
+        this.idAdministrador = idAdministrador;
         this.nome = nome;
         this.senha = senha;
     }
 
     public Administrador() {
     }
-    
+
+    public int getIdAdministrador() {
+        return idAdministrador;
+    }
+
+    public void setIdAdministrador(int idAdministrador) {
+        this.idAdministrador = idAdministrador;
+    }
 
     public String getNome() {
         return nome;

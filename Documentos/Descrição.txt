@@ -1,0 +1,2 @@
+Sistema para manter as contas mensais, poderá ser cadastradas contas com nome, vencimento, valor e status.
+Poderá excluir, atualizar e exibir as contas.

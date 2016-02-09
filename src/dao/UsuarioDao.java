@@ -6,7 +6,7 @@
 package dao;
 
 
-import contas.Administrador;
+
 import contas.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;

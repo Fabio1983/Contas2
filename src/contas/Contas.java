@@ -12,18 +12,28 @@ import java.util.Calendar;
  * @author Fabio
  */
 public class Contas {
+    private int idConta;
     private String nome;
     private float valor;
     Calendar data = Calendar.getInstance();
     private String vencimento;
     private String estado;
 
-    public Contas(String nome, float valor, String vencimento, String estado) {
+    public Contas(int idConta, String nome, float valor, String vencimento, String estado) {
+        this.idConta = idConta;
         this.nome = nome;
         this.valor = valor;
         this.vencimento = vencimento;
         this.estado = estado;
-    }   
+    }
+
+    public int getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(int idConta) {
+        this.idConta = idConta;
+    }
 
     public String getNome() {
         return nome;

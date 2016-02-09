@@ -5,20 +5,17 @@
  */
 package interfaces;
 
-
 import dao.AdministradorDao;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author Fabio
  */
 public class frmLogin extends javax.swing.JFrame {
-
+    //public boolean autenticado = false;
     /**
      * Creates new form frmLogin
      */
@@ -39,7 +36,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,10 +53,10 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
 
@@ -83,7 +80,7 @@ public class frmLogin extends javax.swing.JFrame {
                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,44 +97,52 @@ public class frmLogin extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String nome = txtNome.getText();
-        String senha = String.valueOf(txtSenha.getPassword());
+        char[] pass = txtSenha.getPassword();
+        String senha = String.valueOf(pass);
         
-        if((nome == null)||(senha == null)){
+        boolean autenticado = false;
+        
+        if((nome.isEmpty())||(senha.isEmpty())){
         JOptionPane.showMessageDialog(null, "Campo Não Preenchido!!!");
-        }else{
+        }else{  
             
-        AdministradorDao ad = new AdministradorDao();
+            AdministradorDao adDao = new AdministradorDao();
             
-        boolean resposta = ad.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
-        
-        if (resposta == true) {//Se Usuario e senha estiverem corretos
+            autenticado = adDao.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
+            
+            if(autenticado == false){
+            JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
+            }else
+            if(autenticado == true){//Se Usuario e senha estiverem corretos
             JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!!!");
             closeWindow();
             frmPrincipal p = new frmPrincipal();
-            p.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Dados Não conferem!!!");
+            p.setVisible(true);   
         }
-      }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+       }
+    }//GEN-LAST:event_btnEntrarActionPerformed
+    
+    
+    
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){//método que realiza ação se clicado enter dentro do campo senha
+       /* if(evt.getKeyCode() == KeyEvent.VK_ENTER){//método que realiza ação se clicado enter dentro do campo senha
+            //if(this.autenticado == true){
             JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!!!");
             closeWindow();
             frmPrincipal p = new frmPrincipal();
             p.setVisible(true);
-        }
+            //}
+        }*/
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     public static void main(String args[]) {
@@ -173,7 +178,7 @@ public class frmLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

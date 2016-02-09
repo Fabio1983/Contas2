@@ -73,25 +73,25 @@ public class AdministradorDao extends GenericDao{
     
     public boolean verify(String nome, String senha) {
         boolean autenticado = false;
-        String sql;
+        
+        String sql = "SELECT * FROM administrador WHERE nome = ? and senha = ?";
         try {
-            sql = "SELECT * FROM administrador WHERE nome = ? AND senha = ? ";
+            
             PreparedStatement stme;
             stme = conn.prepareStatement(sql);
             stme.setString(1, nome);
             stme.setString(2, senha);
             ResultSet rs = stme.executeQuery();
-            if (rs.next()) {
-                String name = rs.getString("nome");
-                String pass = rs.getString("senha");  
-                autenticado = true;
-            } else { 
-                
-                stme.close();
-                return autenticado;
+           
+            if(rs.next()){
+            //ad.setIdAdministrador(rs.getInt("idAdministrador"));
+            Administrador ad = new Administrador();
+            ad.setNome(rs.getString("nome"));
+            ad.setSenha(rs.getString("senha"));
+            autenticado = true;
             }
-        } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog("Erro: "+ String.valueOf(ex.getMessage()));
+            stme.close();
+        } catch(SQLException ex) {
             System.out.println("ERRO: " + ex.getMessage());
         }
         return autenticado;
