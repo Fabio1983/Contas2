@@ -119,7 +119,7 @@ public class frmLogin extends javax.swing.JFrame {
             
             autenticado = adDao.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
             
-            if(autenticado == false){
+            if(autenticado == false){//verifico se o retorno é true or false
             JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
             }else
             if(autenticado == true){//Se Usuario e senha estiverem corretos
