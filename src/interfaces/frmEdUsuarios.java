@@ -10,6 +10,7 @@ import dao.UsuarioDao;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -207,9 +208,20 @@ public class frmEdUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        //depois de modificado os campos nome ou senha deverá ser clicado em alterar e 
-       //será atualizado os campos no banco de dados        
-        
+        UsuarioDao uDao = new UsuarioDao();
+        Usuario u = new Usuario();
+        u.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+        u.setNome(String.valueOf(txtNomeUsuario.getText()));
+        u.setSenha(String.valueOf(txtSenhaUsuario.getText()));
+        uDao.Update(u);
+        if(uDao.Update(u) == true){
+                JOptionPane.showMessageDialog(null, "Usuário Atualizado com Sucesso!!");
+                txtIdUsuario.setText("");
+                txtNomeUsuario.setText("");
+                txtSenhaUsuario.setText("");
+            }else{
+                System.out.println("Erro ao Atualizar!!!");
+            }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**

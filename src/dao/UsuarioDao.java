@@ -80,4 +80,19 @@ public class UsuarioDao extends GenericDao{
         return u;
     }
     
+    public boolean Update(Usuario usuario){
+        String sql = "UPDATE usuarios SET nome = ?, senha = ? WHERE idUsuario = ?";
+        try{
+            this.prepareStmte(sql);
+            this.stmte.setString(1, usuario.getNome());
+            this.stmte.setString(2,usuario.getSenha());
+            this.stmte.setInt(3, usuario.getIdUsuario());
+            this.stmte.executeUpdate();
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    
 }
