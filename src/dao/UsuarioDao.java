@@ -95,4 +95,17 @@ public class UsuarioDao extends GenericDao{
         }
     }
     
+    public boolean Delete(Usuario u){
+    String sql = "DELETE * FROM usuarios WHERE idUsuario = ?";
+    try{
+        this.prepareStmte(sql);
+        this.stmte.setInt(1,u.getIdUsuario());
+        this.stmte.execute();
+        return true;
+    }
+    catch(Exception e){
+        return false;
+        }
+    }
+    
 }

@@ -66,6 +66,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenu3.add(edUsuarios);
 
         excUsuarios.setText("Exclusão Usuários");
+        excUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excUsuariosActionPerformed(evt);
+            }
+        });
         jMenu3.add(excUsuarios);
 
         jMenu1.add(jMenu3);
@@ -102,6 +107,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         e.setVisible(true);
         closeWindow();
     }//GEN-LAST:event_edUsuariosActionPerformed
+
+    private void excUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excUsuariosActionPerformed
+        frmExcUsuarios e = new frmExcUsuarios();
+        e.setVisible(true);
+        closeWindow();
+    }//GEN-LAST:event_excUsuariosActionPerformed
 
     /**
      * @param args the command line arguments

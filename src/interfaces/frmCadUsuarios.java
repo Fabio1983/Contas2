@@ -5,9 +5,7 @@
  */
 package interfaces;
 
-import contas.Administrador;
 import contas.Usuario;
-import dao.AdministradorDao;
 import dao.UsuarioDao;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
