@@ -37,7 +37,7 @@ public class UsuarioDao extends GenericDao{
     
     public ArrayList<Usuario> getUsuario(){ //L I S T A
         
-        ArrayList<Usuario> uList = new ArrayList<>();
+        ArrayList<Usuario> lstUsuarios = new ArrayList<Usuario>();
 
         String sql = "SELECT * FROM usuarios order by nome";
                
@@ -47,11 +47,12 @@ public class UsuarioDao extends GenericDao{
             rs.beforeFirst();
             while (rs.next()) {
                 Usuario u = new Usuario();
+                u.setIdUsuario(rs.getInt("idUsuario"));
                 u.setNome(rs.getString("nome"));
                 u.setSenha(rs.getString("senha"));
-                uList.add(u);
+                lstUsuarios.add(u);
             }
-            return uList;
+            return lstUsuarios;
         } catch (Exception e) {
             return null;
         } 

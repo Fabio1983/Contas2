@@ -5,17 +5,21 @@
  */
 package interfaces;
 
+import dao.UsuarioDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Fabio
  */
 public class frmExcUsuarios extends javax.swing.JFrame {
-
+    UsuarioDao uDao = new UsuarioDao();
     /**
      * Creates new form frmExcUsuarios
      */
     public frmExcUsuarios() {
         initComponents();
+        
     }
 
     /**
@@ -28,12 +32,22 @@ public class frmExcUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        uList = new javax.swing.JList();
+        lstUsuarios = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setViewportView(uList);
+        lstUsuarios.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "One", "Two", "Three" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        lstUsuarios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstUsuariosValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstUsuarios);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Exclusão de Usuários");
@@ -63,6 +77,12 @@ public class frmExcUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lstUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstUsuariosValueChanged
+        //pega o quando clicar no Jlist
+        String value = (String)lstUsuarios.getSelectedValue();
+        JOptionPane.showMessageDialog(null ,"You clicked !!!" + value);
+    }//GEN-LAST:event_lstUsuariosValueChanged
 
     /**
      * @param args the command line arguments
@@ -102,6 +122,6 @@ public class frmExcUsuarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList uList;
+    private javax.swing.JList lstUsuarios;
     // End of variables declaration//GEN-END:variables
 }
