@@ -11,6 +11,7 @@ import contas.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -107,6 +108,17 @@ public class UsuarioDao extends GenericDao{
     catch(Exception e){
         return false;
         }
+    }
+    
+    public void populateJlist() throws SQLException{
+        DefaultListModel model = new DefaultListModel();
+        String sql = "Select * FROM usuarios";
+        ResultSet rs = this.stmte.executeQuery();
+        this.prepareStmte(sql);
+    while(rs.next()){
+        //adicionar os usuarios na lista
+    }
+    
     }
     
 }
