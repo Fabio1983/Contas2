@@ -5,22 +5,48 @@
  */
 package interfaces;
 
+import contas.Usuario;
 import dao.UsuarioDao;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author Fabio
  */
 public class frmExcUsuarios extends javax.swing.JFrame {
-    private UsuarioDao uDao = new UsuarioDao();
+      private ArrayList <Usuario> list;
     /**
      * Creates new form frmExcUsuarios
      */
     public frmExcUsuarios() {
         initComponents();
-    }
 
+        preencherJList();
+    }
+    
+    private void preencherJList(){
+    try{
+        UsuarioDao uDao = new UsuarioDao();
+        list = uDao.getUsuario();
+        
+        if(list.isEmpty())
+            this.dispose();
+        else{
+                DefaultListModel modelo = new DefaultListModel();
+                for(int i = 0; i < list.size(); i++){
+                  modelo.addElement(list.get(i).getIdUsuario() + " " + list.get(i).getNome());
+                }
+                lstUsuarios.setModel(modelo);
+            }
+    }catch(Exception e){
+    JOptionPane.showMessageDialog(this, "Erro :" + e);
+    }
+    
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,15 +60,10 @@ public class frmExcUsuarios extends javax.swing.JFrame {
         lstUsuarios = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
-        btnVoltar1 = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lstUsuarios.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "One", "Two", "Three" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         lstUsuarios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstUsuariosValueChanged(evt);
@@ -55,7 +76,12 @@ public class frmExcUsuarios extends javax.swing.JFrame {
 
         btnExcluir.setText("Excluir");
 
-        btnVoltar1.setText("Voltar");
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,17 +92,14 @@ public class frmExcUsuarios extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(93, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(465, Short.MAX_VALUE)
-                    .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(92, 92, 92)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,27 +112,30 @@ public class frmExcUsuarios extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(62, 62, 62)
-                    .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(234, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstUsuariosValueChanged
-        //reconhece o clique em item no Jlist
-        String value = (String)lstUsuarios.getSelectedValue();
-        JOptionPane.showMessageDialog(null ,"You clicked Option: " + value + "!!!");
-        
-        
+        //se algo for selecionado no jlist
     }//GEN-LAST:event_lstUsuariosValueChanged
 
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        frmPrincipal p = new frmPrincipal();
+        p.setVisible(true);
+        closeWindow();//fecha janela anterior
+    }//GEN-LAST:event_btnVoltarActionPerformed
+    
+    public void closeWindow(){//método para fechar janelas
+        WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    }
     /**
      * @param args the command line arguments
      */
@@ -147,7 +173,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnVoltar1;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lstUsuarios;

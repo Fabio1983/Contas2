@@ -46,7 +46,7 @@ public class AdministradorDao extends GenericDao{
     
    public ArrayList<Administrador> getAdminByName(String nome){
        
-        ArrayList<Administrador> adl = new ArrayList<Administrador>();
+        ArrayList<Administrador> adl = new ArrayList<>();
         String sql = "SELECT * FROM administrador WHERE nome LIKE ?";
         
         try

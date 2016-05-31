@@ -38,14 +38,12 @@ public class UsuarioDao extends GenericDao{
     
     public ArrayList<Usuario> getUsuario(){ //L I S T A
         
-        ArrayList<Usuario> lstUsuarios = new ArrayList<Usuario>();
-
-        String sql = "SELECT * FROM usuarios order by nome";
-               
+        String sql = "SELECT * FROM usuarios order by idUsuario";
+        ArrayList<Usuario> lstUsuarios = new ArrayList<>();
         try {
             this.prepareStmte(sql);
             ResultSet rs = this.stmte.executeQuery(sql); //sempre usar quando fazer uma consulta(SELECT)
-            rs.beforeFirst();
+            //rs.beforeFirst();
             while (rs.next()) {
                 Usuario u = new Usuario();
                 u.setIdUsuario(rs.getInt("idUsuario"));
@@ -108,17 +106,6 @@ public class UsuarioDao extends GenericDao{
     catch(Exception e){
         return false;
         }
-    }
-    
-    public void populateJlist() throws SQLException{
-        DefaultListModel model = new DefaultListModel();
-        String sql = "Select * FROM usuarios";
-        ResultSet rs = this.stmte.executeQuery();
-        this.prepareStmte(sql);
-    while(rs.next()){
-        //adicionar os usuarios na lista
-    }
-    
     }
     
 }
