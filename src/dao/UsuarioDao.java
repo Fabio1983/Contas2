@@ -11,8 +11,6 @@ import contas.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
-
 /**
  *
  * @author Fabio
@@ -57,6 +55,24 @@ public class UsuarioDao extends GenericDao{
         } 
     }
     
+    public Boolean DeleteUsuarioById(int idUsuario){
+        Usuario u = new Usuario();
+        String sql = "DELETE * FROM usuarios WHERE idUsuario = ?";
+        try{
+            this.prepareStmte(sql);
+            this.stmte.setInt(1, idUsuario);//parametro
+            /*ResultSet rs = */this.stmte.execute();//return um resultset
+            //rs.first();//ResultSet na primeira posição
+            //u.setIdUsuario(rs.getInt("idUsuario"));
+            //u.setNome(rs.getString("nome"));
+            //u.setSenha(rs.getString("senha"));
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    
     public Usuario FindUserByName(String nome){
         Usuario u = new Usuario();
         String sql = "SELECT * FROM usuarios WHERE nome = ?";
@@ -99,7 +115,7 @@ public class UsuarioDao extends GenericDao{
     String sql = "DELETE * FROM usuarios WHERE idUsuario = ?";
     try{
         this.prepareStmte(sql);
-        this.stmte.setInt(1,u.getIdUsuario());
+        this.stmte.setInt(1, u.getIdUsuario());
         this.stmte.execute();
         return true;
     }

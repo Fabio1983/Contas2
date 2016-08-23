@@ -44,6 +44,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(500, 200));
 
         jMenu1.setText("Cadastros");
 

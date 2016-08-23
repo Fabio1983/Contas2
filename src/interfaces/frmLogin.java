@@ -7,14 +7,17 @@ package interfaces;
 
 import dao.AdministradorDao;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author Fabio
  */
 public class frmLogin extends javax.swing.JFrame {
+    //private java.awt.event.KeyEvent evt;
     //public boolean autenticado = false;
     /**
      * Creates new form frmLogin
@@ -39,6 +42,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(500, 200));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Tela de login");
@@ -123,10 +127,12 @@ public class frmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
             }else
             if(autenticado == true){//Se Usuario e senha estiverem corretos
+            
             JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!!!");
             closeWindow();
             frmPrincipal p = new frmPrincipal();
             p.setVisible(true);   
+            
         }
        }
     }//GEN-LAST:event_btnEntrarActionPerformed
@@ -135,14 +141,34 @@ public class frmLogin extends javax.swing.JFrame {
     
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         
-       /* if(evt.getKeyCode() == KeyEvent.VK_ENTER){//método que realiza ação se clicado enter dentro do campo senha
-            //if(this.autenticado == true){
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){//método que realiza ação se clicado enter dentro do campo senha
+        
+        String nome = txtNome.getText();
+        char[] pass = txtSenha.getPassword();
+        String senha = String.valueOf(pass);
+        
+        boolean autenticado = false;
+        
+        if((nome.isEmpty())||(senha.isEmpty())){
+        JOptionPane.showMessageDialog(null, "Campo Não Preenchido!!!");
+        }else{  
+            
+            AdministradorDao adDao = new AdministradorDao();
+            
+            autenticado = adDao.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
+            
+            if(autenticado == false){//verifico se o retorno é true or false
+            JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
+            }else
+            if(autenticado == true){//Se Usuario e senha estiverem corretos
+            
             JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!!!");
             closeWindow();
             frmPrincipal p = new frmPrincipal();
             p.setVisible(true);
-            //}
-        }*/
+        }
+       }
+      }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     public static void main(String args[]) {
