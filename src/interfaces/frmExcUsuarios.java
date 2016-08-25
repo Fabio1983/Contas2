@@ -12,15 +12,15 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
-import javax.swing.event.ListSelectionListener;
+//import javax.swing.ListModel;
+//import javax.swing.event.ListSelectionListener;
 /**
  *
  * @author Fabio
  */
 public class frmExcUsuarios extends javax.swing.JFrame {
       private ArrayList <Usuario> list;
-      private DefaultListModel i;
+      //private DefaultListModel i;
       private Usuario u;
     /**
      * Creates new form frmExcUsuarios
@@ -177,7 +177,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
     private void lstUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstUsuariosValueChanged
         //se algo for selecionado no jlist
         Object nome = lstUsuarios.getSelectedValue();
-        System.out.println(" " + nome);
+        //System.out.println(" " + nome);
         UsuarioDao uDao = new UsuarioDao();
         //Usuario u = new Usuario();
         u = uDao.FindUserByName(String.valueOf(nome));
