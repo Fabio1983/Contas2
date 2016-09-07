@@ -208,6 +208,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
                     txtID.setText("");
                     txtNome.setText("");
                     txtSenha.setText("");
+                    
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(rootPane, "Erro: " + e);
                 }
