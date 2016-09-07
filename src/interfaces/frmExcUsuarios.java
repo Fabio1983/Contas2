@@ -77,6 +77,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(500, 200));
 
         lstUsuarios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -176,13 +177,9 @@ public class frmExcUsuarios extends javax.swing.JFrame {
 
     private void lstUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstUsuariosValueChanged
         //se algo for selecionado no jlist
-        //Usuario u = new Usuario();
         Object nome = lstUsuarios.getSelectedValue();
-        //System.out.println(" " + nome);
         UsuarioDao uDao = new UsuarioDao();
-        //Usuario u = new Usuario();
         u = uDao.FindUserByName(String.valueOf(nome));
-        //i = lstUsuarios.getSelectionMode();
         
     }//GEN-LAST:event_lstUsuariosValueChanged
 
@@ -201,7 +198,6 @@ public class frmExcUsuarios extends javax.swing.JFrame {
             case 0://sim
                 try{
             UsuarioDao uDao = new UsuarioDao();
-            //Usuario u = new Usuario();
             u.setIdUsuario(Integer.parseInt(txtID.getText()));
             u.setNome(txtNome.getText());
             u.setSenha(txtSenha.getText());
