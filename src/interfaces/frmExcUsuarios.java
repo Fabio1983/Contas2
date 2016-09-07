@@ -197,23 +197,24 @@ public class frmExcUsuarios extends javax.swing.JFrame {
             
             case 0://sim
                 try{
-            UsuarioDao uDao = new UsuarioDao();
-            u.setIdUsuario(Integer.parseInt(txtID.getText()));
-            u.setNome(txtNome.getText());
-            u.setSenha(txtSenha.getText());
-            uDao.Delete(u);
-            
-            txtID.setText("");
-            txtNome.setText("");
-            txtSenha.setText("");
-            JOptionPane.showMessageDialog(rootPane, "Usuario Deletado com Sucesso !!");
+                    UsuarioDao uDao = new UsuarioDao();
+                    u.setIdUsuario(Integer.parseInt(txtID.getText()));
+                    u.setNome(txtNome.getText());
+                    u.setSenha(txtSenha.getText());
+                    uDao.Delete(u);
+
+                    JOptionPane.showMessageDialog(rootPane, "Usuario Deletado com Sucesso !!");
+                    preencherJList();
+                    txtID.setText("");
+                    txtNome.setText("");
+                    txtSenha.setText("");
                 }catch(Exception e){
-                JOptionPane.showMessageDialog(rootPane, "Erro: " + e);
+                    JOptionPane.showMessageDialog(rootPane, "Erro: " + e);
                 }
             break;
             
             case 1://não
-            JOptionPane.showMessageDialog(rootPane, "Usuario não foi Deletado !!!");
+                JOptionPane.showMessageDialog(rootPane, "Usuario não foi Deletado !!!");
             break;                       
         }
         
