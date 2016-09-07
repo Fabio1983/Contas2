@@ -57,11 +57,11 @@ public class UsuarioDao extends GenericDao{
     
     public Boolean DeleteUsuarioById(int idUsuario){
         Usuario u = new Usuario();
-        String sql = "DELETE * FROM usuarios WHERE idUsuario = ?";
+        String sql = "DELETE FROM usuarios WHERE idUsuario = ?";
         try{
             this.prepareStmte(sql);
             this.stmte.setInt(1, idUsuario);//parametro
-            /*ResultSet rs = */this.stmte.execute();//return um resultset
+            this.stmte.execute();//return um resultset
             //rs.first();//ResultSet na primeira posição
             //u.setIdUsuario(rs.getInt("idUsuario"));
             //u.setNome(rs.getString("nome"));
@@ -112,7 +112,7 @@ public class UsuarioDao extends GenericDao{
     }
     
     public boolean Delete(Usuario u){
-    String sql = "DELETE * FROM usuarios WHERE idUsuario = ?";
+    String sql = "DELETE FROM usuarios WHERE idUsuario = ?";
     try{
         this.prepareStmte(sql);
         this.stmte.setInt(1, u.getIdUsuario());

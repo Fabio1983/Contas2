@@ -147,7 +147,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -168,7 +168,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 27, Short.MAX_VALUE))
         );
 
         pack();
@@ -176,6 +176,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
 
     private void lstUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstUsuariosValueChanged
         //se algo for selecionado no jlist
+        //Usuario u = new Usuario();
         Object nome = lstUsuarios.getSelectedValue();
         //System.out.println(" " + nome);
         UsuarioDao uDao = new UsuarioDao();
@@ -192,12 +193,39 @@ public class frmExcUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        //excluir usuario que esta no textfield
         //pedir confirmação antes de excluir para segurança
+        //excluir usuario que esta no textfield
+        int dado = JOptionPane.showConfirmDialog(rootPane, "Quer mesmo deletar este Usuario ??");
+        switch(dado){
+            
+            case 0://sim
+                try{
+            UsuarioDao uDao = new UsuarioDao();
+            //Usuario u = new Usuario();
+            u.setIdUsuario(Integer.parseInt(txtID.getText()));
+            u.setNome(txtNome.getText());
+            u.setSenha(txtSenha.getText());
+            uDao.Delete(u);
+            
+            txtID.setText("");
+            txtNome.setText("");
+            txtSenha.setText("");
+            JOptionPane.showMessageDialog(rootPane, "Usuario Deletado com Sucesso !!");
+                }catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Erro: " + e);
+                }
+            break;
+            
+            case 1://não
+            JOptionPane.showMessageDialog(rootPane, "Usuario não foi Deletado !!!");
+            break;                       
+        }
+        
+        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        UsuarioDao uDao = new UsuarioDao();
+
         txtID.setText(String.valueOf(u.getIdUsuario()));
         txtNome.setText(String.valueOf(u.getNome()));
         txtSenha.setText(String.valueOf(u.getSenha()));
