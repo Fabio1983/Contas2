@@ -7,7 +7,9 @@ package dao;
 
 
 
+
 import contas.Usuario;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -122,6 +124,32 @@ public class UsuarioDao extends GenericDao{
     catch(Exception e){
         return false;
         }
+    }
+    
+    public boolean verify(String nome, String senha) {
+        boolean autenticado = false;
+        
+        String sql = "SELECT * FROM usuarios WHERE nome = ? and senha = ?";
+        try {
+            
+            PreparedStatement stme;
+            stme = conn.prepareStatement(sql);
+            stme.setString(1, nome);
+            stme.setString(2, senha);
+            ResultSet rs = stme.executeQuery();
+           
+            if(rs.next()){
+            
+            Usuario u = new Usuario();
+            u.setNome(rs.getString("nome"));
+            u.setSenha(rs.getString("senha"));
+            autenticado = true;
+            }
+            stme.close();
+        } catch(SQLException ex) {
+            System.out.println("ERRO: " + ex.getMessage());
+        }
+        return autenticado;
     }
     
 }

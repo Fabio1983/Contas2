@@ -11,11 +11,10 @@ public class Contas {
     private int idConta;
     private String nome;
     private float valor;
-    Calendar data = Calendar.getInstance();
-    private String vencimento;
+    private Calendar vencimento = Calendar.getInstance();
     private String estado;
 
-    public Contas(int idConta, String nome, float valor, String vencimento, String estado) {
+    public Contas(int idConta, String nome,Calendar vencimento, float valor, String estado) {
         this.idConta = idConta;
         this.nome = nome;
         this.valor = valor;
@@ -47,19 +46,11 @@ public class Contas {
         this.valor = valor;
     }
 
-    public Calendar getData() {
-        return data;
-    }
-
-    public void setData(Calendar data) {
-        this.data = data;
-    }
-
-    public String getVencimento() {
+    public Calendar getVencimento() {
         return vencimento;
     }
 
-    public void setVencimento(String vencimento) {
+    public void setVencimento(Calendar vencimento) {
         this.vencimento = vencimento;
     }
 
