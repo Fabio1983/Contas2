@@ -7,6 +7,7 @@ package interfaces;
 
 import contas.Usuario;
 import dao.UsuarioDao;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -209,7 +210,7 @@ public class frmExcUsuarios extends javax.swing.JFrame {
                     txtNome.setText("");
                     txtSenha.setText("");
                     
-                }catch(Exception e){
+                }catch(NumberFormatException | HeadlessException e){
                     JOptionPane.showMessageDialog(rootPane, "Erro: " + e);
                 }
             break;

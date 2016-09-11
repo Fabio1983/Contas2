@@ -210,23 +210,35 @@ public class frmEdUsuarios extends javax.swing.JFrame {
         lblId.setVisible(true);
         lblNome.setVisible(true);
         lblSenha.setVisible(true);
+        txtIdUsuario.setEditable(false);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        UsuarioDao uDao = new UsuarioDao();
-        Usuario u = new Usuario();
-        u.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
-        u.setNome(String.valueOf(txtNomeUsuario.getText()));
-        u.setSenha(String.valueOf(txtSenhaUsuario.getText()));
-        uDao.Update(u);
-        if(uDao.Update(u) == true){
+        int dado = JOptionPane.showConfirmDialog(rootPane, "Deseja modificar os dados??");
+        switch(dado){
+            
+            case 0://sim
+                UsuarioDao uDao = new UsuarioDao();
+                Usuario u = new Usuario();
+                u.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+                u.setNome(String.valueOf(txtNomeUsuario.getText()));
+                u.setSenha(String.valueOf(txtSenhaUsuario.getText()));
+                uDao.Update(u);
+                
+                if(uDao.Update(u) == true)
                 JOptionPane.showMessageDialog(null, "Usuário Atualizado com Sucesso!!");
                 txtIdUsuario.setText("");
                 txtNomeUsuario.setText("");
                 txtSenhaUsuario.setText("");
-            }else{
-                System.out.println("Erro ao Atualizar!!!");
-            }
+                cmbUsuarios.removeAllItems();
+                ComboUsuarios();
+                
+            break;
+            
+            case 1://não
+                JOptionPane.showMessageDialog(null, "Usuário não foi modificado!!");
+            break;
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
