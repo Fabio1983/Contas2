@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class frmEdUsuarios extends javax.swing.JFrame {
     
-    private ArrayList<Usuario> list;
+    private ArrayList<Usuario> list = new ArrayList<>();
     /**
      * Creates new form frmEdUsuarios
      */
