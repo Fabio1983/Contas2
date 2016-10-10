@@ -6,6 +6,7 @@
 package interfaces;
 
 import dao.AdministradorDao;
+import dao.UsuarioDao;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -124,15 +125,22 @@ public class frmLogin extends javax.swing.JFrame {
             autenticado = adDao.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
             
             if(autenticado == false){//verifico se o retorno é true or false
-            JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
+            /* 
+                UsuarioDao uDao = new UsuarioDao();
+           
+                autenticado = uDao.verify(nome,senha);//verifica no uDao.verify e se for true exibe formcontas
+            
+            if(autenticado == false){*/
+            
+                JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
+            //}
             }else
             if(autenticado == true){//Se Usuario e senha estiverem corretos
             
-            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!!!");
+            JOptionPane.showMessageDialog(null, "Administrador logado com sucesso!!!");
             closeWindow();
             frmPrincipal p = new frmPrincipal();
             p.setVisible(true);   
-            
         }
        }
     }//GEN-LAST:event_btnEntrarActionPerformed
