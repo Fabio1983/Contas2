@@ -37,18 +37,16 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
         cadUsuarios = new javax.swing.JMenuItem();
         edUsuarios = new javax.swing.JMenuItem();
         excUsuarios = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(500, 200));
 
-        jMenu1.setText("Cadastros");
-
-        jMenu3.setText("Usuários");
+        jMenu1.setText("Manutenção de Usuários");
 
         cadUsuarios.setText("Cadastro Usuários");
         cadUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +54,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 cadUsuariosActionPerformed(evt);
             }
         });
-        jMenu3.add(cadUsuarios);
+        jMenu1.add(cadUsuarios);
 
         edUsuarios.setText("Edição Usuários");
         edUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +62,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 edUsuariosActionPerformed(evt);
             }
         });
-        jMenu3.add(edUsuarios);
+        jMenu1.add(edUsuarios);
 
         excUsuarios.setText("Exclusão Usuários");
         excUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -72,14 +70,15 @@ public class frmPrincipal extends javax.swing.JFrame {
                 excUsuariosActionPerformed(evt);
             }
         });
-        jMenu3.add(excUsuarios);
-
-        jMenu1.add(jMenu3);
+        jMenu1.add(excUsuarios);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Relatórios");
         jMenuBar1.add(jMenu2);
+
+        jMenu4.setText("Sair");
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -156,7 +155,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem excUsuarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

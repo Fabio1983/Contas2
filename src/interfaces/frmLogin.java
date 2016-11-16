@@ -114,7 +114,7 @@ public class frmLogin extends javax.swing.JFrame {
         char[] pass = txtSenha.getPassword();
         String senha = String.valueOf(pass);
         
-        boolean autenticado = false;
+        boolean autenticado;
         
         if((nome.isEmpty())||(senha.isEmpty())){
         JOptionPane.showMessageDialog(null, "Campo Não Preenchido!!!");
@@ -124,25 +124,28 @@ public class frmLogin extends javax.swing.JFrame {
             
             autenticado = adDao.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
             
-            if(autenticado == false){//verifico se o retorno é true or false
-            /* 
-                UsuarioDao uDao = new UsuarioDao();
-           
-                autenticado = uDao.verify(nome,senha);//verifica no uDao.verify e se for true exibe formcontas
-            
-            if(autenticado == false){*/
-            
-                JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
-            //}
-            }else
-            if(autenticado == true){//Se Usuario e senha estiverem corretos
-            
-            JOptionPane.showMessageDialog(null, "Administrador logado com sucesso!!!");
-            closeWindow();
-            frmPrincipal p = new frmPrincipal();
-            p.setVisible(true);   
+            if(autenticado == true){//Se Usuario e senha estiverem corretos = administrador
+                JOptionPane.showMessageDialog(null, "Administrador logado com sucesso!!!");
+                closeWindow();
+                frmPrincipal p = new frmPrincipal();
+                p.setVisible(true);
+            }else{
+                if(autenticado == false){
+                    UsuarioDao uDao = new UsuarioDao();
+                    autenticado = uDao.verify(nome, senha);
+                    
+                    if(autenticado == true){//Se Usuario e senha estiverem corretos = usuario
+                    JOptionPane.showMessageDialog(null, "Usuario logado com sucesso!!!");
+                    closeWindow();
+                    frmContas c = new frmContas();
+                    c.setVisible(true);
+                }else{//se não for nenhum falha na autenticação
+                    JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
+            }
+                    
+                }
         }
-       }
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
     
     
@@ -165,15 +168,29 @@ public class frmLogin extends javax.swing.JFrame {
             
             autenticado = adDao.verify(nome,senha);//Pego usuario e senha digitados e jogo no metodo para validar
             
-            if(autenticado == false){//verifico se o retorno é true or false
-            JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
-            }else
-            if(autenticado == true){//Se Usuario e senha estiverem corretos
-            
-            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!!!");
-            closeWindow();
-            frmPrincipal p = new frmPrincipal();
-            p.setVisible(true);
+            if(autenticado == true){//Se Usuario e senha estiverem corretos = administrador
+                JOptionPane.showMessageDialog(null, "Administrador logado com sucesso!!!");
+                closeWindow();
+                frmPrincipal p = new frmPrincipal();
+                p.setVisible(true);
+            }else{
+                if(autenticado == false){
+                    UsuarioDao uDao = new UsuarioDao();
+                    autenticado = uDao.verify(nome, senha);
+                    
+                    if(autenticado == true){//Se Usuario e senha estiverem corretos = usuario
+                    JOptionPane.showMessageDialog(null, "Usuario logado com sucesso!!!");
+                    closeWindow();
+                    frmContas c = new frmContas();
+                    c.setVisible(true);
+                }else{//se não for nenhum falha na autenticação
+                    JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
+            }
+                    
+                }
+                   
+                    
+                
         }
        }
       }
