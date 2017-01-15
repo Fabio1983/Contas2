@@ -11,7 +11,7 @@ public class Contas {
     private int idConta;
     private String nome;
     private float valor;
-    private Calendar vencimento = Calendar.getInstance();
+    private Calendar vencimento;
     private String estado;
 
     public Contas(int idConta, String nome,Calendar vencimento, float valor, String estado) {
