@@ -1,7 +1,7 @@
 
 package contas;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  *
@@ -11,10 +11,10 @@ public class Contas {
     private int idConta;
     private String nome;
     private float valor;
-    private Calendar vencimento;
+    private LocalDate vencimento;
     private String estado;
 
-    public Contas(int idConta, String nome,Calendar vencimento, float valor, String estado) {
+    public Contas(int idConta, String nome,LocalDate vencimento, float valor, String estado) {
         this.idConta = idConta;
         this.nome = nome;
         this.valor = valor;
@@ -46,11 +46,11 @@ public class Contas {
         this.valor = valor;
     }
 
-    public Calendar getVencimento() {
+    public LocalDate getVencimento() {
         return vencimento;
     }
 
-    public void setVencimento(Calendar vencimento) {
+    public void setVencimento(LocalDate vencimento) {
         this.vencimento = vencimento;
     }
 
