@@ -122,7 +122,7 @@ public class frmCadastroUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        frmPrincipal p = new frmPrincipal();
+        frmPrincipalUsuarios p = new frmPrincipalUsuarios();
         p.setVisible(true);
         closeWindow();//fecha janela anterior
     }//GEN-LAST:event_btnVoltarActionPerformed

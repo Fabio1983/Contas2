@@ -185,7 +185,7 @@ public class frmExclusaoUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_lstUsuariosValueChanged
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        frmPrincipal p = new frmPrincipal();
+        frmPrincipalUsuarios p = new frmPrincipalUsuarios();
         p.setVisible(true);
         closeWindow();//fecha janela anterior
     }//GEN-LAST:event_btnVoltarActionPerformed
