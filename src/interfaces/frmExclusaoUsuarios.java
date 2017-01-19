@@ -19,14 +19,14 @@ import javax.swing.DefaultListModel;
  *
  * @author Fabio
  */
-public class frmExcUsuarios extends javax.swing.JFrame {
+public class frmExclusaoUsuarios extends javax.swing.JFrame {
       private ArrayList <Usuario> list;
       //private DefaultListModel i;
       private Usuario u;
     /**
      * Creates new form frmExcUsuarios
      */
-    public frmExcUsuarios() {
+    public frmExclusaoUsuarios() {
         initComponents();
         btnExcluir.setVisible(false);
         txtID.setEditable(false);
@@ -252,20 +252,21 @@ public class frmExcUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmExcUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmExclusaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmExcUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmExclusaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmExcUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmExclusaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmExcUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmExclusaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmExcUsuarios().setVisible(true);
+                new frmExclusaoUsuarios().setVisible(true);
             }
         });
     }

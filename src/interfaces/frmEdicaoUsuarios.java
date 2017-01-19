@@ -16,13 +16,13 @@ import javax.swing.JOptionPane;
  *
  * @author Fabio
  */
-public class frmEdUsuarios extends javax.swing.JFrame {
+public class frmEdicaoUsuarios extends javax.swing.JFrame {
     
     private ArrayList<Usuario> list = new ArrayList<>();
     /**
      * Creates new form frmEdUsuarios
      */
-    public frmEdUsuarios() {
+    public frmEdicaoUsuarios() {
         initComponents();
         cmbUsuarios.removeAllItems();
         ComboUsuarios();
@@ -258,20 +258,21 @@ public class frmEdUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmEdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmEdicaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmEdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmEdicaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmEdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmEdicaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmEdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmEdicaoUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmEdUsuarios().setVisible(true);
+                new frmEdicaoUsuarios().setVisible(true);
             }
         });
     }

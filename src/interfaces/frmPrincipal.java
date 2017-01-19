@@ -97,19 +97,19 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadUsuariosActionPerformed
-        frmCadUsuarios u = new frmCadUsuarios();
+        frmCadastroUsuarios u = new frmCadastroUsuarios();
         u.setVisible(true);
         closeWindow();
     }//GEN-LAST:event_cadUsuariosActionPerformed
 
     private void edUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edUsuariosActionPerformed
-        frmEdUsuarios e = new frmEdUsuarios();
+        frmEdicaoUsuarios e = new frmEdicaoUsuarios();
         e.setVisible(true);
         closeWindow();
     }//GEN-LAST:event_edUsuariosActionPerformed
 
     private void excUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excUsuariosActionPerformed
-        frmExcUsuarios e = new frmExcUsuarios();
+        frmExclusaoUsuarios e = new frmExclusaoUsuarios();
         e.setVisible(true);
         closeWindow();
     }//GEN-LAST:event_excUsuariosActionPerformed
