@@ -19,19 +19,22 @@
             <Property name="text" type="java.lang.String" value="Manuten&#xe7;&#xe3;o de Contas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="MenuCadastroContas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastros"/>
+                <Property name="text" type="java.lang.String" value="Cadastros de Contas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuCadastroContasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuEdicaoContas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Edi&#xe7;&#xe3;o de Contas"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="MenuExclusaoContas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edi&#xe7;&#xe3;o"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exclus&#xe3;o"/>
+                <Property name="text" type="java.lang.String" value="Exclus&#xe3;o de Contas"/>
               </Properties>
             </MenuItem>
           </SubComponents>

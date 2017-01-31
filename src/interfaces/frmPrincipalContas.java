@@ -31,9 +31,9 @@ public class frmPrincipalContas extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        MenuCadastroContas = new javax.swing.JMenuItem();
+        MenuEdicaoContas = new javax.swing.JMenuItem();
+        MenuExclusaoContas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem2.setText("jMenuItem2");
@@ -45,14 +45,19 @@ public class frmPrincipalContas extends javax.swing.JFrame {
 
         jMenu1.setText("Manutenção de Contas");
 
-        jMenuItem5.setText("Cadastros");
-        jMenu1.add(jMenuItem5);
+        MenuCadastroContas.setText("Cadastros de Contas");
+        MenuCadastroContas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadastroContasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuCadastroContas);
 
-        jMenuItem1.setText("Edição");
-        jMenu1.add(jMenuItem1);
+        MenuEdicaoContas.setText("Edição de Contas");
+        jMenu1.add(MenuEdicaoContas);
 
-        jMenuItem3.setText("Exclusão");
-        jMenu1.add(jMenuItem3);
+        MenuExclusaoContas.setText("Exclusão de Contas");
+        jMenu1.add(MenuExclusaoContas);
 
         jMenuBar1.add(jMenu1);
 
@@ -74,6 +79,11 @@ public class frmPrincipalContas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MenuCadastroContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadastroContasActionPerformed
+        frmCadastroContas cad = new frmCadastroContas();
+        cad.setVisible(true);
+    }//GEN-LAST:event_MenuCadastroContasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,13 +122,13 @@ public class frmPrincipalContas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuCadastroContas;
+    private javax.swing.JMenuItem MenuEdicaoContas;
+    private javax.swing.JMenuItem MenuExclusaoContas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }
