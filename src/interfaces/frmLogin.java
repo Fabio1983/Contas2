@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import contas.Usuario;
 import dao.AdministradorDao;
 import dao.UsuarioDao;
 import java.awt.Toolkit;
@@ -136,9 +137,11 @@ public class frmLogin extends javax.swing.JFrame {
                     
                     if(autenticado == true){//Se Usuario e senha estiverem corretos = usuario
                     JOptionPane.showMessageDialog(null, "Usuario logado com sucesso!!!");
+                    
                     closeWindow();
                     frmPrincipalContas c = new frmPrincipalContas();
                     c.setVisible(true);
+
                 }else{//se não for nenhum falha na autenticação
                     JOptionPane.showMessageDialog(null," Falha na autenticação !!!");
             }

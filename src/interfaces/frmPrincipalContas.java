@@ -5,6 +5,9 @@
  */
 package interfaces;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+
 /**
  *
  * @author Fabio
@@ -62,6 +65,11 @@ public class frmPrincipalContas extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Sair");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -80,10 +88,20 @@ public class frmPrincipalContas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void closeWindow(){//método para fechar janelas
+        WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    }    
+    
     private void MenuCadastroContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadastroContasActionPerformed
         frmCadastroContas cad = new frmCadastroContas();
         cad.setVisible(true);
     }//GEN-LAST:event_MenuCadastroContasActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        //botao fechar
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments

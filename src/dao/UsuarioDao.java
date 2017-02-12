@@ -152,4 +152,9 @@ public class UsuarioDao extends GenericDao{
         return autenticado;
     }
     
+    public Usuario PegaIdUsuario(Usuario u){
+        String sql = "SELECT idUsuario FROM usuarios ";
+    
+    return u;
+    }
 }
