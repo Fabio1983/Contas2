@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+
 import contas.Usuario;
 import dao.AdministradorDao;
 import dao.UsuarioDao;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
  * @author Fabio
  */
 public class frmLogin extends javax.swing.JFrame {
+
     //private java.awt.event.KeyEvent evt;
     //public boolean autenticado = false;
     /**
@@ -26,6 +28,7 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+        
     }
 
     public void closeWindow(){
@@ -137,7 +140,9 @@ public class frmLogin extends javax.swing.JFrame {
                     
                     if(autenticado == true){//Se Usuario e senha estiverem corretos = usuario
                     JOptionPane.showMessageDialog(null, "Usuario logado com sucesso!!!");
-                    
+                    //uDao.FindUserByName(nome);
+                    //Usuario u = new Usuario();
+                    //u = uDao.FindUserByName(nome);
                     closeWindow();
                     frmPrincipalContas c = new frmPrincipalContas();
                     c.setVisible(true);
@@ -183,8 +188,16 @@ public class frmLogin extends javax.swing.JFrame {
                     
                     if(autenticado == true){//Se Usuario e senha estiverem corretos = usuario
                     JOptionPane.showMessageDialog(null, "Usuario logado com sucesso!!!");
+                    
+                    Usuario u = new Usuario();
+                    u = uDao.FindUserByName(nome);
+                    /*alguem = new QuemLogado(u.getIdUsuario(), u.getNome(), u.getSenha());
+                    System.out.print(" " + alguem.getIdLogado());
+                    System.out.print(" " + alguem.getNomeLogado());
+                    System.out.print(" " + alguem.getSenhaLogado());
+                    */
                     closeWindow();
-                    frmPrincipalContas c = new frmPrincipalContas();
+                    frmPrincipalContas c = new frmPrincipalContas(nome);
                     c.setVisible(true);
                 }else{//se não for nenhum falha na autenticação
                     JOptionPane.showMessageDialog(null," Falha na autenticação !!!");

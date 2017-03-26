@@ -26,12 +26,21 @@ public class frmCadastroContas extends javax.swing.JFrame {
     /**
      * Creates new form frmCadastroContas
      */
-    public frmCadastroContas() {
+    public frmCadastroContas(String alguem) {
         initComponents();
         txtIdUsuario.setEditable(false);
-        
-       // txtIdUsuario.setText(String.valueOf());
+        UsuarioDao uDao = new UsuarioDao();
+        Usuario u = uDao.FindUserByName(alguem);
+        txtIdUsuario.setText(String.valueOf(u.getIdUsuario()));
     }
+
+    private frmCadastroContas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    /*public frmCadastroContas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
     
     public void closeWindow(){//método para fechar janelas
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
@@ -176,6 +185,8 @@ public class frmCadastroContas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        
+        
         String nomeConta = txtNomeConta.getText();
         
         String textConta = txtValorConta.getText();
@@ -185,6 +196,8 @@ public class frmCadastroContas extends javax.swing.JFrame {
         LocalDate vencimentoConta = LocalDate.parse(textVencimento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         
         String estadoConta = txtEstadoConta.getText();
+        
+        
         
         ContaDao cDao = new ContaDao();
         

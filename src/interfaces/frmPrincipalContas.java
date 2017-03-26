@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+
+import contas.Usuario;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
@@ -13,13 +15,25 @@ import java.awt.event.WindowEvent;
  * @author Fabio
  */
 public class frmPrincipalContas extends javax.swing.JFrame {
-
+    
+    
     /**
      * Creates new form frmContas
      */
-    public frmPrincipalContas() {
+    public frmPrincipalContas(String user) {
         initComponents();
+        jTextField1.setEditable(false);
+        jTextField1.setText(user);
     }
+    
+    /*public frmPrincipalContas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
+
+    frmPrincipalContas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,6 +46,8 @@ public class frmPrincipalContas extends javax.swing.JFrame {
 
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuCadastroContas = new javax.swing.JMenuItem();
@@ -45,6 +61,15 @@ public class frmPrincipalContas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(500, 200));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Usuario Logado:");
 
         jMenu1.setText("Manutenção de Contas");
 
@@ -78,11 +103,21 @@ public class frmPrincipalContas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 622, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(409, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,13 +130,21 @@ public class frmPrincipalContas extends javax.swing.JFrame {
     }    
     
     private void MenuCadastroContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadastroContasActionPerformed
-        frmCadastroContas cad = new frmCadastroContas();
-        cad.setVisible(true);
+
+        frmCadastroContas cad = new frmCadastroContas(jTextField1.getText());
+        cad.setVisible(true);      
+        
     }//GEN-LAST:event_MenuCadastroContasActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         //botao fechar
     }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+
+        
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,10 +186,12 @@ public class frmPrincipalContas extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuCadastroContas;
     private javax.swing.JMenuItem MenuEdicaoContas;
     private javax.swing.JMenuItem MenuExclusaoContas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
